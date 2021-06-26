@@ -109,20 +109,20 @@ app.get("/api/users/:_id/logs", (req, res) => {
       if (err) {
         console.log(err);
       } else {
-        filteredLog = foundUser.log.filter((filteredLog) => {
+        foundUser.log = foundUser.log.filter((filteredLog) => {
           return (
             new Date(filteredLog.date) >= new Date(fromDate) &&
             new Date(filteredLog.date) <= new Date(toDate)
           );
         });
 
-        limitedLog = filteredLog.slice(0, limit);
-        let exerciseCount = limitedLog.length;
+        foundUser.log = foundUser.log.slice(0, limit);
+        let exerciseCount = foundUser.log.length;
         res.json({
           _id: foundUser.id,
           username: foundUser.username,
           count: exerciseCount,
-          log: limitedLog
+          log: foundUser.log
         });
       }
     }
