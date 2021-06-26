@@ -117,7 +117,7 @@ app.get("/api/users/:_id/logs", (req, res) => {
         });
 
         limitedLog = filteredLog.slice(0, limit);
-        foundUser.log=linitedLog;
+        foundUser.log=limitedLog;
         let exerciseCount = limitedLog.length;
         res.json({
           _id: foundUser.id,
