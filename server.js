@@ -73,7 +73,7 @@ app.post("/api/users/:_id/exercises", (req, res) => {
     date: date
   });
 
-  if (loggedExercise.date === "Invalid Date") {
+  if (loggedExercise.date === "Invalid Date" || "") {
     loggedExercise.date = new Date().toDateString();
   }
 
