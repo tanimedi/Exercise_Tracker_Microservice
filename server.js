@@ -73,7 +73,7 @@ app.post("/api/users/:_id/exercises", (req, res) => {
     date: date
   });
 
-  if (loggedExercise.date === "") {
+  if (loggedExercise.date === "Invalid Date") {
     loggedExercise.date = new Date().toDateString();
   }
 
@@ -109,20 +109,20 @@ app.get("/api/users/:_id/logs", (req, res) => {
       if (err) {
         console.log(err);
       } else {
-        foundUser.log = foundUser.log.filter((filteredLog) => {
+        filteredLog = foundUser.log.filter((filteredLog) => {
           return (
             new Date(filteredLog.date) >= new Date(fromDate) &&
             new Date(filteredLog.date) <= new Date(toDate)
           );
         });
 
-        foundUser.log = foundUser.log.slice(0, limit);
-        let exerciseCount = foundUser.log.length;
+        limitedLog = filteredLog.slice(0, limit);
+        let exerciseCount = limitedLog.length;
         res.json({
           _id: foundUser.id,
           username: foundUser.username,
           count: exerciseCount,
-          log: foundUser.log
+          log: limitedLog
         });
       }
     }
