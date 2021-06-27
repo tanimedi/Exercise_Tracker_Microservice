@@ -109,6 +109,7 @@ app.get("/api/users/:_id/logs", (req, res) => {
       if (err) {
         console.log(err);
       } else {
+        console.log(foundUser.log)
         foundUser.log = foundUser.log.filter((filteredLog) => {
           return (
             new Date(filteredLog.date) >= new Date(fromDate) &&
