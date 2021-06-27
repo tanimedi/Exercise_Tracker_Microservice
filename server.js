@@ -97,7 +97,7 @@ app.post("/api/users/:_id/exercises", (req, res) => {
 });
 
 app.get("/api/users/:_id/logs", (req, res) => {
-  let fromDate = req.query.from || "2000-01-01";
+  let fromDate = req.query.from || "1980-01-01";
   let toDate = req.query.to || new Date();
   let limit = req.query.limit;
 
