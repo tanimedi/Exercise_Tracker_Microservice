@@ -73,7 +73,7 @@ app.post("/api/users/:_id/exercises", (req, res) => {
     date: date
   });
 
-  if (loggedExercise.date === "Invalid Date" || "") {
+  if (loggedExercise.date === "Invalid Date") {
     loggedExercise.date = new Date().toDateString();
   }
 
@@ -114,6 +114,7 @@ app.get("/api/users/:_id/logs", (req, res) => {
             new Date(filteredLog.date) >= new Date(fromDate) &&
             new Date(filteredLog.date) <= new Date(toDate)
           );
+
         });
 
         foundUser.log = foundUser.log.slice(0, limit);
