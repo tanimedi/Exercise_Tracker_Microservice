@@ -111,7 +111,7 @@ app.get("/api/users/:_id/logs", (req, res) => {
         foundUser.log = foundUser.log.filter((filteredLog) => {
           return (
             new Date(filteredLog.date) >= new Date(fromDate) &&
-            new Date(filteredLog.date) <= new Date(toDate)
+            new Date(filteredLog.date) <= new Date(toDate) || null
           );
 
         });
