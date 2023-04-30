@@ -6,7 +6,7 @@ var mongo = require("mongodb");
 var mongoose = require("mongoose");
 var bodyParser = require("body-parser");
 
-mongoose.connect(process.env.DB_URI, {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
